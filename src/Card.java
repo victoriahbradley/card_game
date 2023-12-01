@@ -32,11 +32,8 @@ public class Card
     {
         int randSuit = (int) (Math.random() * 4);
         int randNum = (int) (Math.random() * 11);
-        String[] suits;
-        suits = newString["Spades", "Clubs", "Diamonds", "Hearts"];
-        Card.setSuit(suits[randSuit]);
-        Card.setNum(randNum);
-        return ;
+        String[] suits = ["Spades", "Clubs", "Diamonds", "Hearts"];
+        return newCard(suits[randSuit], randNum);
     }
 }
 
