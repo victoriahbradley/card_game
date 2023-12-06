@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 public class Deck
 {
+    //cannot use random card generator, mkae all cards
     private ArrayList<Card> cards = new ArrayList<Card>();
     public Deck()
     {
@@ -20,6 +21,7 @@ public class Deck
         return cards.size();
     }
 
+    //Dont use the remove, just use CardsLeft
     public Card deal()
     {
         if (!isEmpty())

@@ -16,8 +16,13 @@ public class Game
     public static void playGame()
     {
         new Game();
+        while (Player.points <= 15)
+        {
+
+        }
     }
 
+    // make the game in main and call playGame()
     public static void main(String[] args){
         playGame();
     }
