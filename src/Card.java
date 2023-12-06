@@ -1,11 +1,11 @@
 import java.lang.Math;
 public class Card
 {
-    static String suit;
+    private String suit;
     //ace = 1 or 11, king = 10, queen = 9, and jack = 10
-    static String rank;
-    int point;
-    public Card (String newSuit, String newRank, int point)
+    private String rank;
+    private int point;
+    public Card (String newSuit, String newRank)
     {
         suit = newSuit;
         rank = newRank;
@@ -17,14 +17,18 @@ public class Card
         {
             point = Integer.parseInt(newRank);
         }
+        else
+        {// "A"
+            point = -1;
+        }
     }
 
-    public static void setSuit(String theSuit)
+    public void setSuit(String theSuit)
     {
         suit = theSuit;
     }
 
-    public static void setRank(String theRank)
+    public void setRank(String theRank)
     {
         rank = theRank;
     }
@@ -46,33 +50,25 @@ public class Card
     {
         return point;
     }
-    public Card newCard()
+    public static Card randCard()
     {
         String newRank = "";
         int newPoints;
-        int randSuit = (int) (Math.random() * 4);
-        int randNum = (int) (Math.random() * 11);
-        if (randNum == 10)
+        int randSuit = (int) (Math.random() * 4) + 1;
+        int randNum = (int) (Math.random() * 13) + 1;
+        if(randNum == 11)
         {
-            int randRank = (int) (Math.random() * 3);
-            if (randRank == 1)
-            {
-                newRank = "J";
-                newPoints = 10;
-
-            }
-            else if (randRank == 2)
-            {
-                newRank = "Q";
-                newPoints = 10;
-            }
-            else if (randRank == 3)
-            {
-                newRank = "K";
-                newPoints = 10;
-            }
+            newRank = "J";
         }
-        else if (randNum == 1 || randNum == 11)
+        else if(randNum == 12)
+        {
+            newRank = "Q";
+        }
+        else if(randNum == 13)
+        {
+            newRank = "K";
+        }
+        else if(randNum == 1)
         {
             newRank = "A";
         }
@@ -80,12 +76,14 @@ public class Card
         {
             newRank = randNum + "";
         }
-        String[] suits = new String[4];
-        suits = ["Clubs", "Diamonds", "Hearts"];
-        return new Card(suits[randSuit], newRank, );
+        String[] suits = new String[]{"Clubs", "Diamonds", "Hearts", "Spades"};
+        return new Card(suits[randSuit], newRank);
     }
 
-    public
+    public String toString()
+    {
+        return rank + " of " + suit;
+    }
 }
 
 

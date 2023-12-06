@@ -1,7 +1,8 @@
 public class Player
 {
-    String name;
-    int points = 0;
+    private String name;
+    private Card card;
+    private int points = 0;
     public Player (String playerName)
     {
         name = playerName;
@@ -26,5 +27,15 @@ public class Player
     public int getPoints()
     {
         return points;
+    }
+
+    public void addCard(Card c)
+    {
+        card = c;
+    }
+
+    public String toString()
+    {
+        return name + " has " + points + " points";
     }
 }
