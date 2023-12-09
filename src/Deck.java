@@ -2,12 +2,19 @@ import java.util.ArrayList;
 public class Deck
 {
     //cannot use random card generator, mkae all cards
-    private ArrayList<Card> cards = new ArrayList<Card>();
+    public static ArrayList<Card> cards = new ArrayList<Card>();
+    private final String[] suits = new String []{"Spades", "Hearts", "Clubs", "Diamonds"};
+    private final String[] rank = new String []{"1", "2", "3", "4", "5", "6", "7", "8", "9", "K", "Q", "J", "11"};
+    private final int[] points = new int []{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+    public static int randInt = (int) Math.random() * cards.size();
     public Deck()
     {
-        for (int i = 0; i < 52; i++)
+        for (int i = 0; i < suits.length; i++)
         {
-            cards.add(Card.randCard());
+            for (int j = 0; j < rank.length; j++)
+            {
+                cards.add(new Card(suits[i], rank[j]));
+            }
         }
     }
 
@@ -16,30 +23,25 @@ public class Deck
         return cards.isEmpty();
     }
 
-    public int getCardsLeft()
+    public static int getCardsLeft()
     {
         return cards.size();
     }
 
     //Dont use the remove, just use CardsLeft
-    public Card deal()
+    public static Card deal()
     {
-        if (!isEmpty())
-        {
-            return cards.remove(0);
-        }
-        else
-        {
-            return null;
-        }
+        int randCard = (int) Math.random() * getCardsLeft();
+        Card theCard = cards.get(randCard);
+        return theCard;
     }
 
     public void shuffle()
     {
-        for(int i = 0; i < cards.size(); i++){
-            int randInd = (int) Math.random() * cards.size();
-            Card randcard = cards.remove(i);
-            cards.add(randcard);
+        int j;
+        for (int i = 0; i < cards.size(); i++)
+        {
+            j = (int) (Math.random() * )
         }
     }
 }

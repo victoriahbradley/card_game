@@ -16,9 +16,15 @@ public class Game
     public static void playGame()
     {
         new Game();
-        while (Player.points <= 15)
+        while (Player.points <= 5)
         {
-
+            Card theCard = Deck.deal();
+            Card otherCard = Deck.cards.get(Deck.randInt);
+            String guess = Player.getGuess();
+            if (Player.checkGuess(String guess, Card theCard, Card otherCard))
+            {
+                Player.points++;
+            }
         }
     }
 

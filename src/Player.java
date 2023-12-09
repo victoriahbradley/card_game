@@ -1,8 +1,10 @@
+import java.util.Scanner;
 public class Player
 {
+    public static int points = 0;
     private String name;
     private Card card;
-    private int points = 0;
+    private static Scanner scan;
     public Player (String playerName)
     {
         name = playerName;
@@ -34,6 +36,18 @@ public class Player
         card = c;
     }
 
+    public static String getGuess()
+    {
+        scan = new Scanner(System.in);
+        System.out.println("Higher (h) or Lower (l)?");
+        String guess = scan.nextLine();
+    }
+
+    public static boolean checkGuess(String guess, Card theCard, Card otherCard)
+    {
+        int thePoints = theCard
+        if (theCard.points == otherCard.points)
+    }
     public String toString()
     {
         return name + " has " + points + " points";
