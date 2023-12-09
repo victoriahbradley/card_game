@@ -3,8 +3,7 @@ public class Player
 {
     public static int points = 0;
     private String name;
-    private Card card;
-    private static Scanner scan;
+
     public Player (String playerName)
     {
         name = playerName;
@@ -33,20 +32,47 @@ public class Player
 
     public void addCard(Card c)
     {
-        card = c;
     }
 
-    public static String getGuess()
+    public static boolean getGuess()
     {
-        scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         System.out.println("Higher (h) or Lower (l)?");
         String guess = scan.nextLine();
+        return checkGuess(guess, Game.theCard, Game.otherCard);
     }
 
     public static boolean checkGuess(String guess, Card theCard, Card otherCard)
     {
-        int thePoints = theCard
-        if (theCard.points == otherCard.points)
+        int thePoints = Card.getPoints(theCard);
+        int otherPoints = Card.getPoints(otherCard);
+        if (thePoints == otherPoints)
+        {
+            System.out.println("Same card, double points!");
+            points += 2;
+            return true;
+        }
+        else if ((thePoints > otherPoints) && (guess.equals("h")))
+        {
+            System.out.println("You are right! +1 Point!");
+            points ++;
+            return true;
+        }
+        else if ((thePoints < otherPoints) && (guess.equals("l")))
+        {
+            System.out.println("You are right! +1 Point!");
+            points++;
+            return true;
+        }
+        else if ((thePoints > otherPoints) && (guess.equals("l")))
+        {
+            System.out.println("You loose!");
+            return false;
+        }
+        else
+        {
+            return false;
+        }
     }
     public String toString()
     {

@@ -1,31 +1,31 @@
 import java.util.Scanner;
 public class Game
 {
-    private Player player;
-    private Deck deck;
-    private Scanner scan;
+    public static Card theCard;
+    public static Card otherCard;
     public Game()
     {
-        scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         System.out.println("What name?");
         String name = scan.nextLine();
-        player = new Player(name);
-        deck = new Deck();
+        Player player = new Player(name);
+        Deck deck = new Deck();
     }
 
     public static void playGame()
     {
         new Game();
-        while (Player.points <= 5)
+        while (Player.points <= 10)
         {
             Card theCard = Deck.deal();
             Card otherCard = Deck.cards.get(Deck.randInt);
-            String guess = Player.getGuess();
-            if (Player.checkGuess(String guess, Card theCard, Card otherCard))
+            Card.toString(theCard);
+            if (!Player.getGuess())
             {
-                Player.points++;
+                break;
             }
         }
+        Deck.shuffle();
     }
 
     // make the game in main and call playGame()

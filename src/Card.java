@@ -1,10 +1,9 @@
 import java.lang.Math;
 public class Card
 {
-    private String suit;
-    //ace = 1 or 11, king = 10, queen = 9, and jack = 10
-    private String rank;
-    private int point;
+    private static String suit;
+    private static String rank;
+    private static int point;
     public Card (String newSuit, String newRank)
     {
         suit = newSuit;
@@ -46,7 +45,7 @@ public class Card
         return rank;
     }
 
-    public int getPoints()
+    public static int getPoints(Card theCard)
     {
         return point;
     }
@@ -80,9 +79,9 @@ public class Card
         return new Card(suits[randSuit], newRank);
     }
 
-    public String toString()
+    public static String toString(Card theCard)
     {
-        return rank + " of " + suit;
+        return theCard.getRank() + " of " + theCard.getSuit();
     }
 }
 

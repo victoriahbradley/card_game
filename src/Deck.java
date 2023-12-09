@@ -3,17 +3,17 @@ public class Deck
 {
     //cannot use random card generator, mkae all cards
     public static ArrayList<Card> cards = new ArrayList<Card>();
-    private final String[] suits = new String []{"Spades", "Hearts", "Clubs", "Diamonds"};
-    private final String[] rank = new String []{"1", "2", "3", "4", "5", "6", "7", "8", "9", "K", "Q", "J", "11"};
     private final int[] points = new int []{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
-    public static int randInt = (int) Math.random() * cards.size();
+    public static int randInt = (int) (Math.random() * cards.size());
     public Deck()
     {
-        for (int i = 0; i < suits.length; i++)
+        String[] suits = new String[]{"Spades", "Hearts", "Clubs", "Diamonds"};
+        for (String suit : suits)
         {
-            for (int j = 0; j < rank.length; j++)
+            String[] rank = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "K", "Q", "J", "11"};
+            for (String s : rank)
             {
-                cards.add(new Card(suits[i], rank[j]));
+                cards.add(new Card(suit, s));
             }
         }
     }
@@ -31,17 +31,21 @@ public class Deck
     //Dont use the remove, just use CardsLeft
     public static Card deal()
     {
-        int randCard = (int) Math.random() * getCardsLeft();
-        Card theCard = cards.get(randCard);
-        return theCard;
+        int randCard = (int) (Math.random() * getCardsLeft());
+        return cards.get(randCard);
     }
 
-    public void shuffle()
+    public static void shuffle()
     {
-        int j;
-        for (int i = 0; i < cards.size(); i++)
+        int[] nums = new int [52];
+        for (int i = 0; i < 52; i++)
         {
-            j = (int) (Math.random() * )
+            nums[i] = i;
+        }
+        for (int j = 0; j < 52; j++)
+        {
+            int randNum = (int) (Math.random() * nums.length);
+
         }
     }
 }
