@@ -3,33 +3,41 @@ public class Game
 {
     public static Card theCard;
     public static Card otherCard;
+    private Deck deck;
+    private Player player;
     public Game()
     {
         Scanner scan = new Scanner(System.in);
         System.out.println("What name?");
         String name = scan.nextLine();
-        Player player = new Player(name);
-        Deck deck = new Deck();
+        player = new Player(name);
+        deck = new Deck();
     }
 
-    public static void playGame()
+    public void playGame()
     {
-        new Game();
-        while (Player.points <= 10)
+        System.out.println("Welcome to Higher or Lower!");
+        System.out.println("To play, you are going to see a card");
+        System.out.println("then, you must guess if the next card with have a higher or lower value,");
+        System.out.println("if you get it right, then you get a point!");
+        System.out.println("If you they are the same card, you will get 2 points!");
+        System.out.println("If you get it wrong, you lose!");
+        System.out.println("Good luck " + player.getName() + "!!!!");
+        while (Player.points <= 7)
         {
-            Card theCard = Deck.deal();
-            Card otherCard = Deck.cards.get(Deck.randInt);
-            Card.toString(theCard);
-            if (!Player.getGuess())
+            theCard = deck.deal();
+            otherCard = deck.deal();
+            System.out.println(theCard);
+            if (!player.getGuess())
             {
                 break;
             }
         }
-        Deck.shuffle();
     }
 
     // make the game in main and call playGame()
     public static void main(String[] args){
-        playGame();
+        Game g = new Game();
+        g.playGame();
     }
 }

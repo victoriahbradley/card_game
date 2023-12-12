@@ -30,11 +30,7 @@ public class Player
         return points;
     }
 
-    public void addCard(Card c)
-    {
-    }
-
-    public static boolean getGuess()
+    public boolean getGuess()
     {
         Scanner scan = new Scanner(System.in);
         System.out.println("Higher (h) or Lower (l)?");
@@ -42,10 +38,10 @@ public class Player
         return checkGuess(guess, Game.theCard, Game.otherCard);
     }
 
-    public static boolean checkGuess(String guess, Card theCard, Card otherCard)
+    public boolean checkGuess(String guess, Card theCard, Card otherCard)
     {
-        int thePoints = Card.getPoints(theCard);
-        int otherPoints = Card.getPoints(otherCard);
+        int thePoints = theCard.getPoints();
+        int otherPoints = otherCard.getPoints();
         if (thePoints == otherPoints)
         {
             System.out.println("Same card, double points!");
@@ -66,7 +62,7 @@ public class Player
         }
         else if ((thePoints > otherPoints) && (guess.equals("l")))
         {
-            System.out.println("You loose!");
+            System.out.println("You lose!");
             return false;
         }
         else
