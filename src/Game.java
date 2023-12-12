@@ -27,9 +27,10 @@ public class Game
         {
             theCard = deck.deal();
             otherCard = deck.deal();
-            System.out.println(theCard);
+            System.out.println("your card: " + theCard);
             if (!player.getGuess())
             {
+                System.out.println("You lose!");
                 break;
             }
         }
