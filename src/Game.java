@@ -31,6 +31,7 @@ public class Game
             if (!player.getGuess())
             {
                 System.out.println("You lose!");
+                System.out.println("The other card was " + otherCard);
                 break;
             }
         }

@@ -52,12 +52,14 @@ public class Player
         {
             System.out.println("You are right! +1 Point!");
             points ++;
+            System.out.println("The other card was " + otherCard);
             return true;
         }
         else if ((thePoints < otherPoints) && (guess.equals("l")))
         {
             System.out.println("You are right! +1 Point!");
             points++;
+            System.out.println("The other card was " + otherCard);
             return true;
         }
         else if ((thePoints > otherPoints) && (guess.equals("l")))
